@@ -1,14 +1,24 @@
 package com.highradius.connection;
 
+import com.highradius.model.Invoice;
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseConnection {
+    private List<Invoice> invoices;
 
-	public DatabaseConnection() {
-		// TODO Auto-generated constructor stub
-	}
+    // Constructor
+    public DatabaseConnection() {
+        invoices = new ArrayList<>();
+    }
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    // Method to get list of invoices
+    public List<Invoice> getInvoices() {
+        return invoices;
+    }
 
-	}
-
+    // Method to add an invoice to the list
+    public void addInvoice(Invoice invoice) {
+        invoices.add(invoice);
+    }
 }

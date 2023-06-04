@@ -1,14 +1,41 @@
 package com.highradius.model;
 
 public class Invoice {
+    private String invoiceNumber;
+    private String customerName;
+    private double amount;
 
-	public Invoice() {
-		// TODO Auto-generated constructor stub
-	}
+    // Parameterized Constructor
+    public Invoice(String invoiceNumber, String customerName, double amount) {
+        this.invoiceNumber = invoiceNumber;
+        this.customerName = customerName;
+        this.amount = amount;
+    }
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    // Getter and Setter for invoiceNumber
+    public String getInvoiceNumber() {
+        return invoiceNumber;
+    }
 
-	}
+    public void setInvoiceNumber(String invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
+    }
 
+    // Getter and Setter for customerName
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    // Getter and Setter for amount
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
 }

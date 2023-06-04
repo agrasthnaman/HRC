@@ -1,9 +1,19 @@
 package com.highradius.servlets;
 
+import com.highradius.implementation.InvoiceDao;
+import com.highradius.implementation.InvoiceDaoImpl;
+import com.highradius.model.Invoice;
+import java.io.IOException;
+import java.util.List;
+
 public class DataLoadingServlet {
+    private InvoiceDao invoiceDao;
 
-	public DataLoadingServlet() {
-		// TODO Auto-generated constructor stub
-	}
+    public void init() {
+        invoiceDao = new InvoiceDaoImpl();
+    }
 
+    public List<Invoice> getInvoices() throws IOException {
+		return invoiceDao.getInvoices();
+    }
 }

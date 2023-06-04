@@ -1,14 +1,11 @@
 package com.highradius.implementation;
 
-public class InvoiceDao {
+import com.highradius.model.Invoice;
+import java.util.List;
 
-	public InvoiceDao() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+public interface InvoiceDao {
+    List<Invoice> getInvoices();
+    void insertInvoice(Invoice invoice);
+    void updateInvoice(int id, Invoice invoice);
+    void deleteInvoice(int id);
 }
