@@ -1,41 +1,91 @@
 package com.highradius.model;
 
+import java.util.Date;
+
 public class Invoice {
-    private String invoiceNumber;
-    private String customerName;
-    private double amount;
+    private String customerOrderID;
+    private String salesOrg;
+    private String distributionChannel;
+    private String customerNumber;
+    private String companyCode;
+    private String orderCurrency;
+    private double amountInUSD;
+    private Date orderCreationDate;
 
-    // Parameterized Constructor
-    public Invoice(String invoiceNumber, String customerName, double amount) {
-        this.invoiceNumber = invoiceNumber;
-        this.customerName = customerName;
-        this.amount = amount;
+    public Invoice(String customerOrderID, String salesOrg, String distributionChannel, String customerNumber,
+                   String companyCode, String orderCurrency, double amountInUSD, Date orderCreationDate) {
+        this.customerOrderID = customerOrderID;
+        this.salesOrg = salesOrg;
+        this.distributionChannel = distributionChannel;
+        this.customerNumber = customerNumber;
+        this.companyCode = companyCode;
+        this.orderCurrency = orderCurrency;
+        this.amountInUSD = amountInUSD;
+        this.orderCreationDate = orderCreationDate;
     }
 
-    // Getter and Setter for invoiceNumber
-    public String getInvoiceNumber() {
-        return invoiceNumber;
+    // Getters and Setters for the fields
+    public String getCustomerOrderID() {
+        return customerOrderID;
     }
 
-    public void setInvoiceNumber(String invoiceNumber) {
-        this.invoiceNumber = invoiceNumber;
+    public void setCustomerOrderID(String customerOrderID) {
+        this.customerOrderID = customerOrderID;
     }
 
-    // Getter and Setter for customerName
-    public String getCustomerName() {
-        return customerName;
+    public String getSalesOrg() {
+        return salesOrg;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setSalesOrg(String salesOrg) {
+        this.salesOrg = salesOrg;
     }
 
-    // Getter and Setter for amount
-    public double getAmount() {
-        return amount;
+    public String getDistributionChannel() {
+        return distributionChannel;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setDistributionChannel(String distributionChannel) {
+        this.distributionChannel = distributionChannel;
+    }
+
+    public String getCustomerNumber() {
+        return customerNumber;
+    }
+
+    public void setCustomerNumber(String customerNumber) {
+        this.customerNumber = customerNumber;
+    }
+
+    public String getCompanyCode() {
+        return companyCode;
+    }
+
+    public void setCompanyCode(String companyCode) {
+        this.companyCode = companyCode;
+    }
+
+    public String getOrderCurrency() {
+        return orderCurrency;
+    }
+
+    public void setOrderCurrency(String orderCurrency) {
+        this.orderCurrency = orderCurrency;
+    }
+
+    public double getAmountInUSD() {
+        return amountInUSD;
+    }
+
+    public void setAmountInUSD(double amountInUSD) {
+        this.amountInUSD = amountInUSD;
+    }
+
+    public Date getOrderCreationDate() {
+        return orderCreationDate;
+    }
+
+    public void setOrderCreationDate(Date orderCreationDate) {
+        this.orderCreationDate = orderCreationDate;
     }
 }

@@ -1,14 +1,19 @@
 package com.highradius.servlets;
 
+import com.highradius.implementation.InvoiceDao;
+import com.highradius.model.Invoice;
+import java.util.ArrayList;
+import java.util.List;
+
 public class AddServlet {
+    private InvoiceDao invoiceDao;
 
-	public AddServlet() {
-		// TODO Auto-generated constructor stub
-	}
+    public AddServlet(InvoiceDao invoiceDao) {
+        this.invoiceDao = invoiceDao;
+    }
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+    public void addInvoice(Invoice invoice) {
+        invoiceDao.insertInvoice(invoice);
+    }
 }
+
