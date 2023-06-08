@@ -1,6 +1,9 @@
 package com.highradius.connection;
 
 import java.sql.*;
+import java.util.List;
+
+import com.highradius.model.Invoice;
 
 public class DatabaseConnection {
     public static void main(String[] args) {
@@ -47,4 +50,14 @@ public class DatabaseConnection {
             }
         }
     }
+
+	public List<Invoice> getInvoices() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void addInvoice(Invoice invoice) {
+		// TODO Auto-generated method stub
+		
+	}
 }
