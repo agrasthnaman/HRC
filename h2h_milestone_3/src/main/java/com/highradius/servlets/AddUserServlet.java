@@ -15,50 +15,49 @@ import com.highradius.dao.UserDAO;
 import com.highradius.dao.UserDaoImpl;
 import com.highradius.model.POJO;
 
+/**
+ * Servlet implementation class AddUser
+ */
 @WebServlet("/AddUser")
 public class AddUserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserDAO userDAO;
 
-    public void init() {
+    public void init() 
+    {
         userDAO = new UserDaoImpl();
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int customerOrderID;
-        int customerNumber;
-        double amountUSD;
-        java.util.Date orderCreationDate;
+        int customerOrderID = Integer.parseInt(request.getParameter("CUSTOMER_ORDER_ID"));
+        String salesOrg = request.getParameter("SALES_ORG");
+        String distributionChannel = request.getParameter("DISTRIBUTION_CHANNEL");
+        int customerNumber = Integer.parseInt(request.getParameter("CUSTOMER_NUMBER"));
+        String companyCode = request.getParameter("COMPANY_CODE");
+        String orderCurrency = request.getParameter("ORDER_CURRENCY");
+        double amountUSD = Double.parseDouble(request.getParameter("AMOUNT_IN_USD"));
+        // Assuming the orderCreationDate is passed as a string in the format "dd-MM-yyyy"
+        String orderCreationDateStr = request.getParameter("ORDER_CREATION_DATE");
+
+        java.sql.Date orderCreationDate = null;
         try {
-            customerOrderID = Integer.parseInt(request.getParameter("CUSTOMER_ORDER_ID"));
-            customerNumber = Integer.parseInt(request.getParameter("CUSTOMER_NUMBER"));
-            amountUSD = Double.parseDouble(request.getParameter("AMOUNT_IN_USD"));
-            orderCreationDate = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("ORDER_CREATION_DATE"));
-        } catch (NumberFormatException | ParseException e) {
-            response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-            response.getWriter().println("Invalid request parameters.");
-            return;
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            java.util.Date utilDate = dateFormat.parse(orderCreationDateStr);
+            orderCreationDate = new java.sql.Date(utilDate.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
 
-        String salesOrg = request.getParameter("salesOrg");
-        String distributionChannel = request.getParameter("distributionChannel");
-        String companyCode = request.getParameter("companyCode");
-        String orderCurrency = request.getParameter("orderCurrency");
-
-        // Create a new POJO object with the provided data
-        POJO newUser = new POJO(customerOrderID, salesOrg, distributionChannel, customerNumber, companyCode,
-                orderCurrency, amountUSD, orderCreationDate);
-
         try {
+            // Create a new POJO object with the provided data
+            POJO newUser = new POJO(customerOrderID, salesOrg, distributionChannel, customerNumber, companyCode,
+                    orderCurrency, amountUSD, orderCreationDate);
+
             // Insert the new user
             userDAO.insertUser(newUser);
-            response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().println("User inserted successfully.");
-            
         } catch (SQLException e) {
-            response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
-            response.getWriter().println("Error inserting user: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 }

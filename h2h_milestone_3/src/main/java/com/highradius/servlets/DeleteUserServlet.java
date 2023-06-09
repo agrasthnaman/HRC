@@ -13,7 +13,6 @@ import com.highradius.dao.UserDAO;
 import com.highradius.dao.UserDaoImpl;
 
 @WebServlet("/DeleteUser")
-//@WebServlet(value = "/DeleteUser", method = {RequestMethod.DELETE})
 public class DeleteUserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private UserDAO userDAO;
@@ -29,18 +28,24 @@ public class DeleteUserServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int CUSTOMER_ORDER_ID = Integer.parseInt(request.getParameter("CUSTOMER_ORDER_ID"));
+        String customerOrderIDStr = request.getParameter("CUSTOMER_ORDER_ID");
 
-        try {
-            boolean deleted = userDAO.deleteUser(CUSTOMER_ORDER_ID);
-            if (deleted) {
-                response.getWriter().println("User deleted successfully.");
-            } else {
-                response.getWriter().println("Failed to delete user.");
+        if (customerOrderIDStr != null && !customerOrderIDStr.isEmpty()) {
+            int customerOrderID = Integer.parseInt(customerOrderIDStr);
+
+            try {
+                boolean deleted = userDAO.deleteUser(customerOrderID);
+                if (deleted) {
+                    response.getWriter().println("User deleted successfully.");
+                } else {
+                    response.getWriter().println("Failed to delete user.");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                response.getWriter().println("An error occurred while deleting the user.");
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.getWriter().println("An error occurred while deleting the user.");
+        } else {
+            response.getWriter().println("Invalid or missing CUSTOMER_ORDER_ID parameter.");
         }
     }
 }
