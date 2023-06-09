@@ -21,8 +21,10 @@ public class UserDaoImpl implements UserDAO {
     private static final String UPDATE_USER_SQL = "UPDATE h2h_oap SET SALES_ORG = ?, DISTRIBUTION_CHANNEL = ?, CUSTOMER_NUMBER = ?, COMPANY_CODE = ?, ORDER_CURRENCY = ?, AMOUNT_IN_USD = ?, ORDER_CREATION_DATE = ? WHERE CUSTOMER_ORDER_ID = ?";
 
     public void insertUser(POJO user) throws SQLException {
+    	System.out.println("check1....");
         try (Connection connection = DbConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USER_SQL)) {
+        	System.out.println("check2....");
             preparedStatement.setInt(1, user.getCustomerOrderID());
             preparedStatement.setString(2, user.getSalesOrg());
             preparedStatement.setString(3, user.getDistributionChannel());
@@ -41,13 +43,15 @@ public class UserDaoImpl implements UserDAO {
 
         // Modify the SELECT query to retrieve top 'n' users
         String selectQuery = "SELECT * FROM h2h_oap ORDER BY CUSTOMER_ORDER_ID LIMIT ?";
-        
+//        System.out.println("check....");
         try (Connection connection = DbConnection.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
             preparedStatement.setInt(1, n);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
+//                System.out.println("check2....");
+
                 int CUSTOMER_ORDER_ID = resultSet.getInt("CUSTOMER_ORDER_ID");
                 String SALES_ORG = resultSet.getString("SALES_ORG");
                 String DISTRIBUTION_CHANNEL = resultSet.getString("DISTRIBUTION_CHANNEL");
@@ -69,6 +73,7 @@ public class UserDaoImpl implements UserDAO {
                 POJO user = new POJO(CUSTOMER_ORDER_ID, SALES_ORG, DISTRIBUTION_CHANNEL, CUSTOMER_NUMBER, COMPANY_CODE, ORDER_CURRENCY, AMOUNT_IN_USD, ORDER_CREATION_DATE);
                 users.add(user);
             }
+            
         } catch (SQLException e) {
             e.printStackTrace();
         }

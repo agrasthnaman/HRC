@@ -31,10 +31,10 @@ public class AddUserServlet extends HttpServlet {
         double amountUSD;
         java.util.Date orderCreationDate;
         try {
-            customerOrderID = Integer.parseInt(request.getParameter("customerOrderID"));
-            customerNumber = Integer.parseInt(request.getParameter("customerNumber"));
-            amountUSD = Double.parseDouble(request.getParameter("amountUSD"));
-            orderCreationDate = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("orderCreationDate"));
+            customerOrderID = Integer.parseInt(request.getParameter("CUSTOMER_ORDER_ID"));
+            customerNumber = Integer.parseInt(request.getParameter("CUSTOMER_NUMBER"));
+            amountUSD = Double.parseDouble(request.getParameter("AMOUNT_IN_USD"));
+            orderCreationDate = new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("ORDER_CREATION_DATE"));
         } catch (NumberFormatException | ParseException e) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             response.getWriter().println("Invalid request parameters.");
