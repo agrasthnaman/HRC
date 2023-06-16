@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import data from "../data/Data";
 import "../App.css";
 
@@ -44,6 +46,9 @@ const H2HGrid = () => {
                   checked={selectAll}
                   onChange={(e) => handleCheckboxChange(e, -1)}
                 />
+                {selectAll && (
+                  <FontAwesomeIcon icon={faCheck} className="check-icon" />
+                )}
               </label>
             </th>
             <th>SL NO</th>
@@ -68,6 +73,12 @@ const H2HGrid = () => {
                     checked={isRowSelected(index)}
                     onChange={(e) => handleCheckboxChange(e, index)}
                   />
+                  {isRowSelected(index) && (
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      className="check-icon"
+                    />
+                  )}
                 </label>
               </td>
               <td>{props.SlNo}</td>
