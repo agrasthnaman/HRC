@@ -24,15 +24,17 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"]:checked {
-  background-color: rgb(207, 205, 205);
+  border-color: #fc7500;
+  background-color: #fc7500;
+  /* background-color: rgb(207, 205, 205); */
 }
 
 table {
-  border: 6px solid #000000;
+  /* border: 6px solid #fc7500; */
   margin-top: 20vh;
   background-color: #666666;
   color: white;
-  width: 85%;
+  width: 95%;
   max-width: 100%;
   overflow-x: auto;
   border-collapse: collapse;
@@ -65,6 +67,5 @@ th {
 td {
   padding: 5px 5px 5px 15px;
   border-top: 1px solid white;
-  font-size: 11px;
+  font-size: 12px;
 }
-

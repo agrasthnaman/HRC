@@ -13,20 +13,13 @@ const H2HGrid = () => {
       setSelectAll(isChecked);
       setSelectedRows(isChecked ? data.map((_, index) => index) : []);
     } else {
-      // Checkbox in a row is clicked
       setSelectedRows((prevSelectedRows) => {
-        const updatedSelectedRows = [...prevSelectedRows];
-        if (isChecked) {
-          updatedSelectedRows.push(index);
-        } else {
-          const indexToRemove = updatedSelectedRows.indexOf(index);
-          if (indexToRemove > -1) {
-            updatedSelectedRows.splice(indexToRemove, 1);
-          }
-        }
+        const updatedSelectedRows = isChecked
+          ? [...prevSelectedRows, index]
+          : prevSelectedRows.filter((rowIndex) => rowIndex !== index);
+        setSelectAll(updatedSelectedRows.length === data.length);
         return updatedSelectedRows;
       });
-      setSelectAll(selectedRows.length === data.length - 1);
     }
   };
 
