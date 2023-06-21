@@ -1,0 +1,91 @@
+/* Add your global styles here */
+
+body {
+    background-image: url('hrclogo.svg');
+    background-repeat: no-repeat;
+    background-position: center 50px;
+    background-size: 150px;
+}
+
+/* Customize the DataGrid component */
+
+.custom-data-grid {
+    margin-top: 20vh;
+    background-color: #666666;
+    color: white;
+    width: 85%;
+    max-width: 100%;
+    overflow-x: auto;
+    border-collapse: collapse;
+    display: block;
+    white-space: nowrap;
+    margin-left: auto;
+    margin-right: auto; 
+
+}
+
+.custom-data-grid .MuiDataGrid-columnsContainer {
+    background-color: #666666;
+    /* color: white; */
+}
+
+.custom-data-grid .MuiDataGrid-columnHeader,
+.custom-data-grid .MuiDataGrid-cell {
+    font-weight: lighter;
+    padding: 15px;
+    font-size: 13px;
+    line-height: 2;
+    color: rgb(249, 251, 252);
+}
+
+.custom-data-grid .MuiDataGrid-cell {
+    padding: 5px 5px 5px 15px;
+    border-top: 1px solid white;
+    font-size: 11px;
+}
+
+.custom-data-grid .MuiDataGrid-columnHeaderCheckbox,
+.custom-data-grid .MuiDataGrid-cellCheckbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.custom-data-grid .MuiDataGrid-columnHeaderCheckbox .MuiCheckbox-root,
+.custom-data-grid .MuiDataGrid-cellCheckbox .MuiCheckbox-root {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border: 2px solid #ffffff;
+    /* Update checkbox border color to white */
+    background-color: transparent;
+    position: relative;
+    
+}
+
+.custom-data-grid .MuiDataGrid-columnHeaderCheckbox .MuiCheckbox-root:after,
+.custom-data-grid .MuiDataGrid-cellCheckbox .MuiCheckbox-root:after {
+    background-color: rgb(251, 249, 249);
+}
+
+/* Scrollbar styles */
+
+.custom-data-grid .MuiDataGrid-window::-webkit-scrollbar {
+    width: 10px;
+    background-color: #666666;
+    color: white;
+}
+
+.custom-data-grid .MuiDataGrid-window::-webkit-scrollbar-thumb {
+    background: #666666;
+    border-radius: 15px;
+    color: wheat;
+}
+
+.custom-data-grid .MuiDataGrid-window::-webkit-scrollbar-thumb:hover {
+    background: #666666;
+    color: white;
+}
